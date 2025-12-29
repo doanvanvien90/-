@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phạm Minh Hiếu</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #05060a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* 🔥 Blue Soul Fire Background */
+    .bg {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, #ff000055, transparent 45%),
+        radial-gradient(circle at 80% 70%, #ff000055, transparent 45%),
+        radial-gradient(circle at center, #020416, #000);
+      filter: blur(50px);
+      z-index: -1;
+    }
+
+    /* 🃏 Card */
+    .card {
+      width: 360px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(10, 15, 30, 0.88);
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 0 40px #ff000066,
+        0 0 90px #ff000033;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .header img {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px; /* rounded square */
+      box-shadow: 0 0 20px #ff0000aa;
+    }
+
+    .info h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #ffeaea;
+    }
+
+    .info p {
+      margin: 0;
+      font-size: 13px;
+      color: #ff7f7f;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .btn {
+      --x: 50%;
+      --y: 50%;
+
+      padding: 14px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      border-radius: 14px;
+
+      background:
+        radial-gradient(
+          180px circle at var(--x) var(--y),
+          #ff0000,
+          #ff3700,
+          #170202
+        );
+
+      box-shadow:
+        0 0 22px #ff3c0055,
+        inset 0 0 12px #ff000044;
+
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow:
+        0 0 35px #ff0000aa,
+        inset 0 0 18px #ff727266;
+    }
+
+    /* 🖱️ Cursor glow */
+    body::after {
+      content: "";
+      position: fixed;
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
+      background: radial-gradient(circle, #ff000055, transparent 70%);
+      filter: blur(22px);
+      transform: translate(-50%, -50%);
+      left: var(--cx, 50%);
+      top: var(--cy, 50%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <div class="card">
+    <div class="header">
+      <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/0cb76b2bea5adc4f865f265bac12c270~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=b21a98cf&x-expires=1767182400&x-signature=aiDDOFdUBMTcAA3m6MWmgzXVsbE%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2" alt="avatar">
+      <div class="info">
+        <h2>DevBlz</h2>
+        <p>Developer × Designer × Content creator</p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a class="btn" href="https://www.tiktok.com/@phamminhhieu088" target="_blank">TikTok</a>
+      <a class="btn" href="https://youtube.com/@minzhiu8373?si=r7dHeJFEe9OOLBlj" target="_blank">Youtube</a>
+      <a class="btn" href="https://www.facebook.com/share/1HQbDhqcnX/" target="_blank">Facebook</a>
+    </div>
+  </div>
+
+  <!-- JS: gradient theo chuột TRONG button -->
+  <script>
+    const buttons = document.querySelectorAll(".btn");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("mousemove", e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        btn.style.setProperty("--x", `${x}px`);
+        btn.style.setProperty("--y", `${y}px`);
+      });
+
+      btn.addEventListener("mouseleave", () => {
+        btn.style.setProperty("--x", "50%");
+        btn.style.setProperty("--y", "50%");
+      });
+    });
+  </script>
+
+</body>
+</html>
